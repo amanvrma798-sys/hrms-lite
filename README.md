@@ -1,199 +1,179 @@
-📌 HRMS Lite – Full-Stack Coding Assignment
+# 📌 HRMS Lite – Full-Stack Coding Assignment
 
-🚀 Live Application
+## 🚀 Live Application
 
-🌐 Frontend (Vercel)
-
+### 🌐 Frontend (Vercel)
 https://hrms-lite-one-rho.vercel.app/
 
-🔧 Backend API (Render)
-
+### 🔧 Backend API (Render)
 https://hrms-backend-0r61.onrender.com/
 
-📦 GitHub Repository
-
+### 📦 GitHub Repository
 https://github.com/amanvrma798-sys/hrms-lite
 
-📖 Project Overview
+---
+
+## 📖 Project Overview
 
 HRMS Lite is a lightweight Human Resource Management System designed to manage employee records and track daily attendance.
 
-This application was built as part of a Full-Stack Coding Assignment to demonstrate:
+This project was developed as part of a Full-Stack Coding Assignment to demonstrate:
 
-Frontend development
-
-Backend REST API design
-
-Database modeling & persistence
-
-Server-side validation
-
-Error handling
-
-Production deployment readiness
+- Frontend development
+- Backend REST API design
+- Database modeling & persistence
+- Server-side validation
+- Error handling
+- Production deployment readiness
 
 The focus is on delivering a clean, stable, and realistically usable system without over-engineering.
 
-🛠 Tech Stack
+---
 
-Frontend
+## 🛠 Tech Stack
 
-React (Vite)
+### Frontend
+- React (Vite)
+- Tailwind CSS
+- Axios
+- Lucide React Icons
 
-Tailwind CSS
+### Backend
+- Django
+- Django REST Framework
 
-Axios
+### Database
+- PostgreSQL (Production – Render)
+- SQLite (Optional for local development)
 
-Lucide React Icons
+### Deployment
+- Frontend: Vercel
+- Backend: Render
 
-Backend
+---
 
-Django
+## ✨ Core Features
 
-Django REST Framework
-
-Database
-
-PostgreSQL (Production – Render)
-
-SQLite (Optional for local development)
-
-Deployment
-
-Frontend: Vercel
-
-Backend: Render
-
-✨ Core Features
-
-1️⃣ Employee Management
+### 1️⃣ Employee Management
 
 Admin can:
 
-Add new employee with:
+- Add new employee with:
+  - Employee ID (Unique)
+  - Full Name
+  - Email Address (Validated)
+  - Department
+- View list of employees
+- Delete employees
 
-Employee ID (Unique)
+#### Server-Side Validation Includes:
 
-Full Name
+- Required field validation
+- Email format validation
+- Duplicate employee ID prevention
+- Duplicate email prevention
+- Proper HTTP status codes (200, 201, 400)
 
-Email Address (Validated)
+#### Example Structured Error Response
 
-Department
-
-View list of employees
-
-Delete employees
-
-Server-Side Validation Includes:
-
-Required field validation
-
-Email format validation
-
-Duplicate employee ID prevention
-
-Duplicate email prevention
-
-Proper HTTP status codes (200, 201, 400)
-
-Example Structured Error Response
+```json
 {
   "employee_id": ["Employee with this ID already exists."]
 }
+```
 
-2️⃣ Attendance Management
+---
+
+### 2️⃣ Attendance Management
 
 Admin can:
 
-Mark attendance:
-
-Date
-
-Status (Present / Absent)
-
-View attendance records per employee
-
-Prevent duplicate attendance for the same employee on the same date
+- Mark attendance:
+  - Date
+  - Status (Present / Absent)
+- View attendance records per employee
+- Prevent duplicate attendance for the same employee on the same date
 
 Database-level unique constraints ensure data integrity.
 
-3️⃣ Dashboard Summary (Bonus Feature)
+---
+
+### 3️⃣ Dashboard Summary (Bonus Feature)
 
 Dashboard provides:
 
-Total Employees
-
-Present Today
-
-Absent Today
+- Total Employees
+- Present Today
+- Absent Today
 
 This gives a quick operational overview of workforce attendance.
 
-🌐 Live API Endpoints
+---
+
+## 🌐 Live API Endpoints
 
 Base URL:
 
+```
 https://hrms-backend-0r61.onrender.com/api/
+```
 
-📌 Employees
+### 📌 Employees
 
-GET
-https://hrms-backend-0r61.onrender.com/api/employees/
+```
+GET    /api/employees/
+POST   /api/employees/
+DELETE /api/employees/{id}/
+```
 
-POST
-https://hrms-backend-0r61.onrender.com/api/employees/
+Live:
 
-DELETE
-https://hrms-backend-0r61.onrender.com/api/employees/{id}/
+- https://hrms-backend-0r61.onrender.com/api/employees/
+- https://hrms-backend-0r61.onrender.com/api/employees/{id}/
 
-📌 Attendance
+---
 
-POST
+### 📌 Attendance
 
-https://hrms-backend-0r61.onrender.com/api/attendance/
+```
+POST   /api/attendance/
+GET    /api/attendance/list/?employee_id=EMP001
+GET    /api/attendance/dashboard/
+```
 
-GET (Filter by employee ID)
+Live:
 
-https://hrms-backend-0r61.onrender.com/api/attendance/list/?employee_id=EMP001
+- https://hrms-backend-0r61.onrender.com/api/attendance/
+- https://hrms-backend-0r61.onrender.com/api/attendance/list/?employee_id=EMP001
+- https://hrms-backend-0r61.onrender.com/api/attendance/dashboard/
 
-GET (Dashboard Summary)
+---
 
-https://hrms-backend-0r61.onrender.com/api/attendance/dashboard/
+## 🧪 How To Test (Evaluator Guide)
 
-🧪 How To Test (Evaluator Guide)
+1. Open Frontend:
+   https://hrms-lite-one-rho.vercel.app/
 
-Open frontend:
+2. Go to **Employees**:
+   - Add employee
+   - Try duplicate email → error appears
+   - Try duplicate employee ID → error appears
+   - Delete employee
 
-https://hrms-lite-one-rho.vercel.app/
+3. Go to **Attendance**:
+   - Select employee
+   - Mark attendance
+   - Try marking same date twice → validation works
 
-Go to Employees:
-
-Add employee
-
-Try duplicate email → error shown
-
-Try duplicate employee ID → error shown
-
-Delete employee
-
-Go to Attendance:
-
-Select employee
-
-Mark attendance
-
-Try marking same date twice → validation works
-
-Go to Dashboard:
-
-See total employees
-
-See present & absent count
+4. Go to **Dashboard**:
+   - View total employees
+   - View present & absent counts
 
 All operations are connected to live PostgreSQL database.
 
+---
 
-# 📂 Project Structure
+## 📂 Project Structure
 
 ```
 hrms-lite/
@@ -232,93 +212,93 @@ hrms-lite/
 └── README.md
 ```
 
-⚙️ Local Setup
+---
 
-Backend
+## ⚙️ Local Setup
 
+### Backend
+
+```bash
 cd backend
-
 python -m venv venv
+```
 
 Activate:
 
 Windows:
-
+```
 venv\Scripts\activate
+```
 
 Mac/Linux:
-
+```
 source venv/bin/activate
+```
 
 Install dependencies:
 
+```
 pip install -r requirements.txt
+```
 
 Run migrations:
 
+```
 python manage.py migrate
+```
 
 Start server:
 
+```
 python manage.py runserver
+```
 
-Frontend
+---
 
+### Frontend
+
+```bash
 cd frontend
-
 npm install
-
 npm run dev
+```
 
-🔐 Environment Variables (Production)
+---
+
+## 🔐 Environment Variables (Production)
 
 Backend uses secure environment variables for:
 
-
-SECRET_KEY
-
-
-Database credentials
-
-
-DEBUG flag
-
+- SECRET_KEY
+- Database credentials
+- DEBUG flag
 
 No sensitive credentials are stored in GitHub.
 
+---
 
-⚠️ Assumptions
+## ⚠️ Assumptions
 
+- Single admin user (no authentication required)
+- Leave management & payroll excluded intentionally
+- Designed as lightweight internal HR tool
 
-Single admin user (no authentication required as per assignment scope)
+---
 
+## ✅ Assignment Coverage
 
-Leave management & payroll excluded intentionally
+- ✔ Employee Management
+- ✔ Attendance Tracking
+- ✔ RESTful APIs
+- ✔ Database Persistence
+- ✔ Server-side Validation
+- ✔ Error Handling
+- ✔ Clean Professional UI
+- ✔ Live Deployment
 
+---
 
-Designed as lightweight internal HR tool
-
-
-✅ Assignment Coverage
-
-✔ Employee Management
-
-✔ Attendance Tracking
-
-✔ RESTful APIs
-
-✔ Database Persistence
-
-✔ Server-side Validation
-
-✔ Error Handling
-
-✔ Clean Professional UI
-
-✔ Live Deployment
-
-
-👨‍💻 Final Note
+## 👨‍💻 Final Note
 
 This project fulfills all requirements of the Full-Stack Coding Assignment and demonstrates practical full-stack development capability including frontend, backend, database design, validation, and deployment.
 
