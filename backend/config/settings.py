@@ -3,27 +3,19 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'aman1234'
+# ==============================
+# Security
+# ==============================
 
-DEBUG = True
+SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key")
 
-ALLOWED_HOSTS = ['*']
+DEBUG = os.getenv("DEBUG", "True") == "True"
 
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],  # optional
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
+ALLOWED_HOSTS = ["*"]
+
+# ==============================
+# Applications
+# ==============================
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -55,27 +47,50 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'config.urls'
 WSGI_APPLICATION = 'config.wsgi.application'
 
+# ==============================
+# Templates
+# ==============================
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / "templates"],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+# ==============================
+# CORS
+# ==============================
+
 CORS_ALLOW_ALL_ORIGINS = True
 
-# 🔹 PostgreSQL (Render Ready)
+# ==============================
+# Database (Render + Local)
+# ==============================
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hrms_db',
-        'USER': 'postgres',
-        'PASSWORD': 'Aman@293007',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.getenv("DB_NAME"),
+        'USER': os.getenv("DB_USER"),
+        'PASSWORD': os.getenv("DB_PASSWORD"),
+        'HOST': os.getenv("DB_HOST"),
+        'PORT': os.getenv("DB_PORT", "5432"),
     }
 }
 
-# For local dev (comment PostgreSQL and use this)
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+# ==============================
+# REST Framework
+# ==============================
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
@@ -86,5 +101,11 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
 }
 
+# ==============================
+# Static Files
+# ==============================
+
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
