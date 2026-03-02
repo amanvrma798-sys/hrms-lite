@@ -184,6 +184,9 @@ See present & absent count
 All operations are connected to live PostgreSQL database.
 
 📂 Project Structure
+# 📂 Project Structure
+
+```
 hrms-lite/
 │
 ├── backend/
@@ -218,11 +221,13 @@ hrms-lite/
 │
 ├── .gitignore
 └── README.md
-
+```
 
 ⚙️ Local Setup
 Backend
+
 cd backend
+
 python -m venv venv
 
 Activate:
@@ -246,40 +251,62 @@ python manage.py migrate
 Start server:
 
 python manage.py runserver
+
 Frontend
+
 cd frontend
+
 npm install
+
 npm run dev
+
 🔐 Environment Variables (Production)
 
 Backend uses secure environment variables for:
 
+
 SECRET_KEY
+
 
 Database credentials
 
+
 DEBUG flag
+
 
 No sensitive credentials are stored in GitHub.
 
+
 ⚠️ Assumptions
+
 
 Single admin user (no authentication required as per assignment scope)
 
+
 Leave management & payroll excluded intentionally
 
+
 Designed as lightweight internal HR tool
+
 
 ✅ Assignment Coverage
 
 ✔ Employee Management
+
 ✔ Attendance Tracking
+
 ✔ RESTful APIs
+
 ✔ Database Persistence
+
 ✔ Server-side Validation
+
 ✔ Error Handling
+
 ✔ Clean Professional UI
+
 ✔ Live Deployment
+
 
 👨‍💻 Final Note
 
