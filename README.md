@@ -1,5 +1,7 @@
 📌 HRMS Lite – Full-Stack Coding Assignment
+
 🚀 Live Application
+
 🌐 Frontend (Vercel)
 
 https://hrms-lite-one-rho.vercel.app/
@@ -33,6 +35,7 @@ Production deployment readiness
 The focus is on delivering a clean, stable, and realistically usable system without over-engineering.
 
 🛠 Tech Stack
+
 Frontend
 
 React (Vite)
@@ -62,6 +65,7 @@ Frontend: Vercel
 Backend: Render
 
 ✨ Core Features
+
 1️⃣ Employee Management
 
 Admin can:
@@ -96,6 +100,7 @@ Example Structured Error Response
 {
   "employee_id": ["Employee with this ID already exists."]
 }
+
 2️⃣ Attendance Management
 
 Admin can:
@@ -144,17 +149,21 @@ https://hrms-backend-0r61.onrender.com/api/employees/{id}/
 📌 Attendance
 
 POST
+
 https://hrms-backend-0r61.onrender.com/api/attendance/
 
 GET (Filter by employee ID)
+
 https://hrms-backend-0r61.onrender.com/api/attendance/list/?employee_id=EMP001
 
 GET (Dashboard Summary)
+
 https://hrms-backend-0r61.onrender.com/api/attendance/dashboard/
 
 🧪 How To Test (Evaluator Guide)
 
 Open frontend:
+
 https://hrms-lite-one-rho.vercel.app/
 
 Go to Employees:
@@ -183,7 +192,7 @@ See present & absent count
 
 All operations are connected to live PostgreSQL database.
 
-📂 Project Structure
+
 # 📂 Project Structure
 
 ```
@@ -224,6 +233,7 @@ hrms-lite/
 ```
 
 ⚙️ Local Setup
+
 Backend
 
 cd backend
