@@ -1,24 +1,26 @@
 📌 HRMS Lite – Full-Stack Coding Assignment
 🚀 Live Application
+🌐 Frontend (Vercel)
 
-🧑‍💻 Frontend (Vercel):
-👉 https://hrms-lite-one-rho.vercel.app/
+https://hrms-lite-one-rho.vercel.app/
 
-🛠 Backend API (Render):
-👉 https://hrms-backend-0r61.onrender.com/
+🔧 Backend API (Render)
 
-📦 GitHub Repository:
-👉 https://github.com/amanvrma798-sys/hrms-lite
+https://hrms-backend-0r61.onrender.com/
+
+📦 GitHub Repository
+
+https://github.com/amanvrma798-sys/hrms-lite
 
 📖 Project Overview
 
-HRMS Lite is a lightweight Human Resource Management System built to manage employee records and track daily attendance.
+HRMS Lite is a lightweight Human Resource Management System designed to manage employee records and track daily attendance.
 
-This application was developed as part of a full-stack coding assessment to demonstrate:
+This application was built as part of a Full-Stack Coding Assignment to demonstrate:
 
-Frontend development & UI architecture
+Frontend development
 
-RESTful API design
+Backend REST API design
 
 Database modeling & persistence
 
@@ -28,7 +30,7 @@ Error handling
 
 Production deployment readiness
 
-The focus of this implementation is delivering a clean, stable, and realistically usable system without unnecessary complexity.
+The focus is on delivering a clean, stable, and realistically usable system without over-engineering.
 
 🛠 Tech Stack
 Frontend
@@ -39,7 +41,7 @@ Tailwind CSS
 
 Axios
 
-Lucide Icons
+Lucide React Icons
 
 Backend
 
@@ -64,7 +66,7 @@ Backend: Render
 
 Admin can:
 
-Add a new employee with:
+Add new employee with:
 
 Employee ID (Unique)
 
@@ -74,19 +76,19 @@ Email Address (Validated)
 
 Department
 
-View all employees
+View list of employees
 
 Delete employees
 
-Validation Includes:
+Server-Side Validation Includes:
 
 Required field validation
 
 Email format validation
 
-Duplicate Employee ID prevention
+Duplicate employee ID prevention
 
-Duplicate Email prevention
+Duplicate email prevention
 
 Proper HTTP status codes (200, 201, 400)
 
@@ -98,7 +100,7 @@ Example Structured Error Response
 
 Admin can:
 
-Mark attendance with:
+Mark attendance:
 
 Date
 
@@ -106,13 +108,13 @@ Status (Present / Absent)
 
 View attendance records per employee
 
-Prevent duplicate attendance entries for the same employee on the same date
+Prevent duplicate attendance for the same employee on the same date
 
 Database-level unique constraints ensure data integrity.
 
 3️⃣ Dashboard Summary (Bonus Feature)
 
-The dashboard provides:
+Dashboard provides:
 
 Total Employees
 
@@ -122,47 +124,84 @@ Absent Today
 
 This gives a quick operational overview of workforce attendance.
 
-🧠 Backend & API Design
+🌐 Live API Endpoints
 
-RESTful API structure
+Base URL:
 
-Pagination enabled
+https://hrms-backend-0r61.onrender.com/api/
 
-Structured JSON responses
+📌 Employees
 
-Custom exception handling
+GET
+https://hrms-backend-0r61.onrender.com/api/employees/
 
-Proper HTTP status codes
+POST
+https://hrms-backend-0r61.onrender.com/api/employees/
 
-Database-level unique constraints
+DELETE
+https://hrms-backend-0r61.onrender.com/api/employees/{id}/
 
-🎨 UI & UX Highlights
+📌 Attendance
 
-Clean SaaS-style layout
+POST
+https://hrms-backend-0r61.onrender.com/api/attendance/
 
-Reusable component structure
+GET (Filter by employee ID)
+https://hrms-backend-0r61.onrender.com/api/attendance/list/?employee_id=EMP001
 
-Loading states
+GET (Dashboard Summary)
+https://hrms-backend-0r61.onrender.com/api/attendance/dashboard/
 
-Empty states
+🧪 How To Test (Evaluator Guide)
 
-Error & success alerts
+Open frontend:
+https://hrms-lite-one-rho.vercel.app/
 
-Responsive design
+Go to Employees:
 
-Smooth hover interactions
+Add employee
 
-Clear visual hierarchy
+Try duplicate email → error shown
 
-The interface is intentionally minimal, professional, and production-ready.
+Try duplicate employee ID → error shown
+
+Delete employee
+
+Go to Attendance:
+
+Select employee
+
+Mark attendance
+
+Try marking same date twice → validation works
+
+Go to Dashboard:
+
+See total employees
+
+See present & absent count
+
+All operations are connected to live PostgreSQL database.
 
 📂 Project Structure
 hrms-lite/
 │
 ├── backend/
 │   ├── config/
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   └── exceptions.py
+│   │
 │   ├── employees/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   └── views.py
+│   │
 │   ├── attendance/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   └── views.py
+│   │
 │   ├── manage.py
 │   └── requirements.txt
 │
@@ -173,23 +212,26 @@ hrms-lite/
 │   │   ├── layouts/
 │   │   ├── pages/
 │   │   └── main.jsx
+│   │
 │   ├── package.json
 │   └── vite.config.js
 │
 ├── .gitignore
 └── README.md
-⚙️ Local Setup Instructions
-🔹 Backend Setup
+
+
+⚙️ Local Setup
+Backend
 cd backend
 python -m venv venv
 
-Activate virtual environment:
+Activate:
 
-Windows
+Windows:
 
 venv\Scripts\activate
 
-Mac/Linux
+Mac/Linux:
 
 source venv/bin/activate
 
@@ -197,53 +239,17 @@ Install dependencies:
 
 pip install -r requirements.txt
 
-Apply migrations:
+Run migrations:
 
 python manage.py migrate
 
-Run development server:
+Start server:
 
 python manage.py runserver
-
-Backend runs at:
-
-http://127.0.0.1:8000/
-🔹 Frontend Setup
+Frontend
 cd frontend
 npm install
 npm run dev
-
-Frontend runs at:
-
-http://localhost:5173/
-🔗 API Endpoints
-Employees
-GET    /api/employees/
-POST   /api/employees/
-DELETE /api/employees/{id}/
-Attendance
-POST   /api/attendance/
-GET    /api/attendance/list/?employee_id=EMP001
-GET    /api/attendance/dashboard/
-🌍 Deployment
-Backend
-
-Hosted on Render
-
-Connected to PostgreSQL database
-
-Environment variables configured securely
-
-Production-ready configuration
-
-Frontend
-
-Hosted on Vercel
-
-Connected to live backend API
-
-Production build via Vite
-
 🔐 Environment Variables (Production)
 
 Backend uses secure environment variables for:
@@ -252,31 +258,31 @@ SECRET_KEY
 
 Database credentials
 
-DEBUG configuration
+DEBUG flag
 
-No sensitive data is hardcoded in the repository.
+No sensitive credentials are stored in GitHub.
 
 ⚠️ Assumptions
 
-Single admin user (authentication not required as per assignment scope)
+Single admin user (no authentication required as per assignment scope)
 
-Payroll and leave management are intentionally excluded
+Leave management & payroll excluded intentionally
 
 Designed as lightweight internal HR tool
 
-Optimized for clarity, stability, and usability
+✅ Assignment Coverage
 
-✅ Assignment Compliance
-Requirement	Status
-Employee Management	✔
-Attendance Tracking	✔
-RESTful APIs	✔
-Database Persistence	✔
-Server-side Validation	✔
-Error Handling	✔
-Clean & Responsive UI	✔
-Live Deployment (Frontend + Backend)	✔
+✔ Employee Management
+✔ Attendance Tracking
+✔ RESTful APIs
+✔ Database Persistence
+✔ Server-side Validation
+✔ Error Handling
+✔ Clean Professional UI
+✔ Live Deployment
+
 👨‍💻 Final Note
 
-This project was developed specifically to satisfy the requirements of the Full-Stack Coding Assignment and focuses on clean architecture, stability, and usability.
+This project fulfills all requirements of the Full-Stack Coding Assignment and demonstrates practical full-stack development capability including frontend, backend, database design, validation, and deployment.
 
+The application is fully functional, publicly accessible, and production-ready.
